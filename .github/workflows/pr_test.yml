@@ -1,0 +1,38 @@
+name: PR Test - Community Mode
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  pr-test-community:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Simulate community new_game and move
+        run: |
+          python scripts/handle_issue.py new_game true
+          python scripts/handle_issue.py D3 $(python -c "import json, hashlib; b=json.load(open('game_state.json'))['board']; print(hashlib.sha256(json.dumps(b,separators=(',',':')).encode()).hexdigest()[:8])") test_community
+
+      - name: Check board output
+        run: |
+          test -f game_state.json
+          test -f README.md
+          grep -q "Solid" README.md || grep -q "Hollow" README.md

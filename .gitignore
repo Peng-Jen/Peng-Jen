@@ -1,0 +1,4 @@
+*backup/
+scripts/__pycache__/
+scripts/*test.py
+.DS_store

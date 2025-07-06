@@ -1,0 +1,122 @@
+name: Handle Reversi Issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  handle-reversi:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo (default branch, shallow)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse issue title
+        id: parse
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          AUTHOR="${{ github.event.issue.user.login }}"
+
+          echo "Issue title: $TITLE"
+          echo "Author: $AUTHOR"
+
+          if [[ "$TITLE" =~ ^\[(AI|Community)\]\ move\ ([A-H][1-8])\ ([a-f0-9]{8,64})$ ]]; then
+            echo "mode=move" >> $GITHUB_OUTPUT
+            echo "game_type=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
+            echo "coord=${BASH_REMATCH[2]}" >> $GITHUB_OUTPUT
+            echo "hash=${BASH_REMATCH[3]}" >> $GITHUB_OUTPUT
+            echo "user=$AUTHOR" >> $GITHUB_OUTPUT
+          elif [[ "$TITLE" =~ ^\[(AI|Community)\]\ new_game$ ]]; then
+            echo "mode=new_game" >> $GITHUB_OUTPUT
+            echo "game_type=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
+            if [[ "$AUTHOR" == "Peng-Jen" ]]; then
+              echo "force=true" >> $GITHUB_OUTPUT
+            else
+              echo "force=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "❌ Invalid issue title format"
+            exit 1
+          fi
+
+      - name: Checkout correct branch
+        run: |
+          BRANCH="${{ steps.parse.outputs.game_type == 'AI' && 'AI' || 'Community' }}"
+          echo "Switching to $BRANCH..."
+          git fetch origin $BRANCH
+          git checkout $BRANCH
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Cache pip
+        if: steps.parse.outputs.game_type == 'AI'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        if: steps.parse.outputs.game_type == 'AI'
+        run: |
+          pip install --upgrade pip --prefer-binary
+          pip install --prefer-binary -r requirements.txt
+
+      - name: Run issue handler
+        run: |
+          MODE="${{ steps.parse.outputs.mode }}"
+          if [[ "$MODE" == "new_game" ]]; then
+            python scripts/handle_issue.py new_game ${{ steps.parse.outputs.force }}
+          else
+            python scripts/handle_issue.py "${{ steps.parse.outputs.coord }}" "${{ steps.parse.outputs.hash }}" "${{ steps.parse.outputs.user }}"
+          fi
+
+      - name: Commit player move
+        run: |
+          BRANCH="${{ steps.parse.outputs.game_type == 'AI' && 'AI' || 'Community' }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md game_state.json flip_history.jsonl || true
+          
+          MODE="${{ steps.parse.outputs.mode }}"
+          if [[ "$MODE" == "new_game" ]]; then
+            git commit -m "[${{ steps.parse.outputs.game_type }}] New game started" || echo "Nothing to commit"
+          else
+            git commit -m "[${{ steps.parse.outputs.game_type }}] Player move ${{ steps.parse.outputs.coord }}" || echo "Nothing to commit"
+          fi
+          
+          git push origin HEAD:$BRANCH
+
+      - name: Run AI move
+        if: steps.parse.outputs.game_type == 'AI' && steps.parse.outputs.mode == 'move'
+        run: python scripts/agent_move.py
+
+      - name: Commit AI move
+        if: steps.parse.outputs.game_type == 'AI' && steps.parse.outputs.mode == 'move'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          MOVE=$(jq -r '.move // "pass"' ai_move_log.json)
+          git add README.md game_state.json flip_history.jsonl || true
+          git commit -m "[AI] AI move $MOVE" || echo "Nothing to commit"
+          git push origin HEAD:AI
+
+      - name: Comment and close issue
+        uses: peter-evans/close-issue@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: |
+            ✅ Handled: **${{ github.event.issue.title }}**  
+            ${{ steps.parse.outputs.game_type == 'AI' && 'AI has also responded!' || 'Human vs Human mode' }}  
+            [View board →](https://github.com/Peng-Jen/Peng-Jen/tree/${{ steps.parse.outputs.game_type == 'AI' && 'AI' || 'Community' }})
