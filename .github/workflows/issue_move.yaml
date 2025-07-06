@@ -93,7 +93,7 @@ jobs:
           if [[ "$MODE" == "new_game" ]]; then
             git commit -m "[${{ steps.parse.outputs.game_type }}] New game started" || echo "Nothing to commit"
           else
-            git commit -m "[${{ steps.parse.outputs.game_type }}] Player move ${{ steps.parse.outputs.coord }}" || echo "Nothing to commit"
+            git commit -m "[${{ steps.parse.outputs.game_type }}] ${{ steps.parse.outputs.user }} move ${{ steps.parse.outputs.coord }}" || echo "Nothing to commit"
           fi
           
           git push origin HEAD:$BRANCH
