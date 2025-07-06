@@ -56,11 +56,11 @@ It uses a convolutional neural network to estimate Q-values for each of the 64 b
 - **Output**: Q-values for all 64 positions
 - **Loss Function**: SmoothL1Loss (Huber)
 - **Optimizer**: Adam, learning rate = 1e-5
-- **Discount Factor ($\gamma$)**: 0.99
+- **Discount Factor $\gamma$**: 0.99
 - **Exploration**: Epsilon-greedy  
 - **Replay Buffer Size**: 100,000
 - **Batch Size**: 128
-- **Target Network Update**: Soft update with $	au$ = 0.01
+- **Target Network Update**: Soft update with $\tau$ = 0.01
 
 ## Training Progress:
 
