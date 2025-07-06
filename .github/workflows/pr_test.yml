@@ -1,0 +1,43 @@
+name: PR Test - AI Mode
+
+on:
+  pull_request:
+    branches: [AI]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  pr-test-ai:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+
+      - name: Simulate new AI game and move
+        run: |
+          python scripts/handle_issue.py new_game true
+          python scripts/handle_issue.py D3 $(python -c "import json, hashlib; b=json.load(open('game_state.json'))['board']; print(hashlib.sha256(json.dumps(b,separators=(',',':')).encode()).hexdigest()[:8])") test_ai
+
+      - name: Simulate AI response move
+        run: |
+          python scripts/agent_move.py
+          test -f ai_move_log.json
+          cat ai_move_log.json
+
+      - name: Check board output
+        run: |
+          test -f game_state.json
+          test -f README.md
+          grep -q "Solid" README.md || grep -q "Hollow" README.md
