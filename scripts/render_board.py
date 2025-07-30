@@ -25,9 +25,9 @@ Reversi is a turn-based strategy board game for two players: Black (Solid) and W
 - You'll see the board updated shortly.
 
 ## Current state
-This is the **Community Version**  
-Click a move to join the human-only game.  
-Want to challenge AI instead? [Switch to AI version](https://github.com/Peng-Jen/Peng-Jen/tree/AI)
+This is the **AI Challenge Version**  
+Click a move to play against the bot.  
+Prefer human vs. human? [Switch to community version](https://github.com/Peng-Jen/Peng-Jen/tree/Community)
 
 Now, it's your turn!
 """
@@ -48,7 +48,7 @@ It uses a convolutional neural network to estimate Q-values for each of the 64 b
 - **Exploration**: Epsilon-greedy  
 - **Replay Buffer Size**: 100,000
 - **Batch Size**: 128
-- **Target Network Update**: Soft update with $\tau$ = 0.01
+- **Target Network Update**: Soft update with $\\tau$ = 0.01
 
 ## Training Progress:
 
@@ -148,8 +148,9 @@ def write_readme(board, board_for_hash, current_player, repo_url, history=None):
 
         if is_game_over(board_for_hash):
             solid, hollow = count_score(board_for_hash)
+            winner = "Player" if solid > hollow else "The Bot"
             f.write(board_md + "\n\n")
-            f.write("### 🎉 Game Over\n")
+            f.write(f"### 🎉 Game Over (**{winner}** wins)\n")
             f.write(f"**Solid**: {solid} vs. **Hollow**: {hollow}\n\n")
             f.write(f"Click [here]({REPO_URL}/issues/new?title=%5BAI%5D+new_game) to start a new game\n")
         else:
