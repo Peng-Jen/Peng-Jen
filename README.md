@@ -20,17 +20,17 @@ Click a move to join the human-only game.
 Want to challenge AI instead? [Switch to AI version](https://github.com/Peng-Jen/Peng-Jen/tree/AI)
 
 Now, it's your turn!
-**SOLID** to move.
+**HOLLOW** to move.
 
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
 | **1** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
-| **2** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
-| **3** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+C3+c1e2227b&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+D3+c1e2227b&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+E3+c1e2227b&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+F3+c1e2227b&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+G3+c1e2227b&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | <img src='./reversi_images/blank.png' width='64' height='64'/> |
-| **4** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/hollow.png' width='64' height='64'/> | <img src='./reversi_images/hollow.png' width='64' height='64'/> | <img src='./reversi_images/hollow.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
+| **2** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+F2+275cd8ef&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
+| **3** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
+| **4** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/hollow.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/hollow.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
 | **5** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
-| **6** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
-| **7** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
+| **6** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | <img src='./reversi_images/solid.png' width='64' height='64'/> | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+F6+275cd8ef&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
+| **7** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+C7+275cd8ef&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | [![](./reversi_images/hint_dot.png)](https://github.com/Peng-Jen/Peng-Jen/issues/new?title=%5BAI%5D+move+D7+275cd8ef&body=Just+click+'Create'.+You+don't+need+to+do+anything+else.) | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
 | **8** | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> | <img src='./reversi_images/blank.png' width='64' height='64'/> |
 
 
@@ -39,11 +39,13 @@ Now, it's your turn!
 |------|------|---------|
 | 🥇 | [@Peng-Jen](https://github.com/Peng-Jen) | 2 |
 | 🥈 | [@Peng-Jen](https://github.com/Peng-Jen) | 1 |
+| 🥉 | [@winniehuang0616](https://github.com/winniehuang0616) | 1 |
 
 ### Top Contributors
 | Rank | User | Moves |
 |------|------|--------|
 | 🥇 | [@Peng-Jen](https://github.com/Peng-Jen) | 2 |
+| 🥈 | [@winniehuang0616](https://github.com/winniehuang0616) | 1 |
 
 # About Agent
 
@@ -56,11 +58,11 @@ It uses a convolutional neural network to estimate Q-values for each of the 64 b
 - **Output**: Q-values for all 64 positions
 - **Loss Function**: SmoothL1Loss (Huber)
 - **Optimizer**: Adam, learning rate = 1e-5
-- **Discount Factor $\gamma$**: 0.99
+- **Discount Factor ($\gamma$)**: 0.99
 - **Exploration**: Epsilon-greedy  
 - **Replay Buffer Size**: 100,000
 - **Batch Size**: 128
-- **Target Network Update**: Soft update with $\tau$ = 0.01
+- **Target Network Update**: Soft update with $	au$ = 0.01
 
 ## Training Progress:
 
